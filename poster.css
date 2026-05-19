@@ -259,77 +259,221 @@ html, body {
   font-size: 35px;       /* per user request */
   color: var(--ink);
   margin: 0 0 6mm;
-  max-width: 600mm;
+  max-width: none;       /* don't force a wrap */
   line-height: 1.4;
 }
 
 /* ============== LANDINGPAGE / MODULES ============== */
 .landingpage { padding: 6mm 18mm 4mm; }
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5mm;
-  margin-top: 4mm;
-}
-.card {
-  background: var(--bg);
-  border: 0.4mm solid var(--line);
-  border-radius: 2mm;
-  padding: 6mm 7mm;
-  display: flex;
-  flex-direction: column;
-  gap: 3mm;
-  box-shadow: 0 0.4mm 1mm rgba(0,0,0,.02);
-}
-.card-head { display: flex; align-items: flex-start; gap: 4mm; }
-.card-head img {
-  height: 16mm;
-  width: 16mm;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-.card-head h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 33px;       /* per user request */
+
+/* Module status chip (shared) */
+.module-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 14pt;
+  font-weight: 600;
+  padding: 1mm 4mm;
+  border-radius: 999px;
+  background: #fff;
+  border: 0.3mm solid var(--line);
   color: var(--navy);
-  margin: 1mm 0 0;
-  line-height: 1.15;
 }
-.card p {
-  font-size: 30px;       /* per user request */
-  margin: 0;
-  color: var(--ink);
-  line-height: 1.35;
-  flex: 1;
-}
+.module-chip--dev  { color: var(--orange); border-color: var(--orange); }
+.module-chip--done { color: #2a8a3e; border-color: #2a8a3e; }
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 2mm;
   margin-top: 2mm;
 }
-.module-chip {
-  display: inline-flex;
+
+/* --- Featured modules (3 cards, more breathing room) --- */
+.module-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7mm;
+  margin-top: 4mm;
+}
+.module-feature {
+  background: var(--bg);
+  border: 0.4mm solid var(--line);
+  border-left: 3mm solid var(--orange);
+  border-radius: 2mm;
+  padding: 10mm 11mm;
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
+  box-shadow: 0 0.4mm 1mm rgba(0,0,0,.02);
+}
+.feature-head { display: flex; align-items: flex-start; gap: 6mm; }
+.feature-head img {
+  height: 26mm;
+  width: 26mm;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.feature-head h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--navy);
+  margin: 0 0 2mm;
+  line-height: 1.15;
+}
+.feature-desc {
+  font-size: 30px;
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.feature-leads {
+  font-size: 25px;
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.4;
+  padding-top: 4mm;
+  border-top: 0.3mm solid var(--line);
+}
+.feature-leads strong {
+  color: var(--navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2mm;
+}
+.leads-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5mm;
+}
+.leads-list li {
+  display: flex;
   align-items: center;
+  gap: 3mm;
+  line-height: 1.25;
+}
+.leads-list em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.85em;
+  margin-left: 1mm;
+}
+
+/* Hub contact — smaller, de-emphasised line below the named leads */
+.hub-contact {
+  margin: 3mm 0 0;
   font-family: var(--font-body);
-  font-size: 15pt;
-  font-weight: 600;
-  padding: 1.2mm 5mm;
-  border-radius: 999px;
-  background: #fff;
-  border: 0.3mm solid var(--line);
+  font-size: 18px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* "Contributors / feedback" sub-label for additional contributor lists */
+.leads-sublabel {
+  display: block;
+  margin: 4mm 0 2mm;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 22px;
   color: var(--navy);
 }
-.module-chip--dev { color: var(--orange); border-color: var(--orange); }
+
+/* Flag badges (small circles with the country flag / Hub helix / community symbol) */
+.flag {
+  display: inline-block;
+  width: 8mm;
+  height: 8mm;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  border: 0.3mm solid rgba(0,0,0,.12);
+  background-color: #fff;
+  vertical-align: middle;
+}
+.flag-nl  { background-image: url("assets/img/flags/nl.svg"); }
+.flag-gb  { background-image: url("assets/img/flags/gb.svg"); }
+.flag-pt  { background-image: url("assets/img/flags/pt.svg"); }
+.flag-it  { background-image: url("assets/img/flags/it.svg"); }
+.flag-no  { background-image: url("assets/img/flags/no.svg"); }
+.flag-es  { background-image: url("assets/img/flags/es.svg"); }
+.flag-ee  { background-image: url("assets/img/flags/ee.svg"); }
+.flag-hub {
+  background-image: url("assets/img/flags/hub.svg");
+  background-size: 72%;
+  background-repeat: no-repeat;
+  background-color: var(--navy);
+}
+.flag-community {
+  background-color: var(--orange);
+  position: relative;
+}
+.flag-community::before {
+  content: "";
+  position: absolute;
+  inset: 1.5mm;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, #fff 12%, transparent 14%),
+    radial-gradient(circle at 70% 30%, #fff 12%, transparent 14%),
+    radial-gradient(circle at 50% 70%, #fff 12%, transparent 14%);
+}
+
+/* --- Subtitle between featured + tiles --- */
+.modules-subtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24pt;
+  color: var(--navy);
+  margin: 10mm 0 4mm;
+  padding-bottom: 2mm;
+  border-bottom: 0.3mm solid var(--line);
+}
+
+/* --- Compact icon + name tiles (7 modules) --- */
+.module-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5mm;
+}
+.module-tile {
+  flex: 0 0 calc(25% - 5mm);
+  background: var(--bg);
+  border: 0.4mm solid var(--line);
+  border-radius: 2mm;
+  padding: 6mm 5mm;
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  box-shadow: 0 0.4mm 1mm rgba(0,0,0,.02);
+}
+.module-tile img {
+  height: 22mm;
+  width: 22mm;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.module-tile h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.15;
+}
 
 /* ============== INTERACTIVE — heatmap LEFT + stickies RIGHT ============== */
 .interactive {
-  margin-top: 6mm;
-  padding: 10mm 18mm 8mm;
-  background: var(--bg-alt);
+  margin-top: 10mm;
+  padding: 18mm 18mm 18mm;       /* generous top + bottom breathing room */
+  background: #e6ecf2;
   border-top: 0.4mm solid var(--line);
   border-bottom: 0.4mm solid var(--line);
+  flex: 1 0 auto;                /* expand to fill remaining height so it meets the footer */
 }
 .interactive-grid {
   display: grid;
@@ -399,12 +543,12 @@ html, body {
   margin-bottom: 2mm;
 }
 
-/* The tube — looks like glass: thick border, solid sides, rounded top */
+/* The tube — looks like glass: thin navy border, solid sides, rounded top */
 .thermo-tube {
   width: 22mm;
   height: 160mm;
   background: #fff;
-  border: 1.4mm solid var(--orange);
+  border: 1mm solid var(--navy);
   border-bottom: none;
   border-radius: 11mm 11mm 0 0;
   position: relative;
@@ -431,17 +575,17 @@ html, body {
   top: 1.4mm;
   width: 3mm;
   height: 0.5mm;
-  background: var(--orange);
+  background: var(--navy);
 }
 .tick:nth-of-type(1) { bottom: 80mm; }  /* "10" */
 .tick:nth-of-type(2) { bottom: 40mm; }  /* "5"  */
 
-/* The bulb — visually merged into the bottom of the tube */
+/* The bulb — light navy fill, navy border, merged with the bottom of the tube */
 .thermo-bulb {
   width: 36mm;
   height: 36mm;
-  background: var(--orange);
-  border: 1.4mm solid var(--orange);
+  background: #d2dde6;            /* light tint of #023452 (navy) */
+  border: 1mm solid var(--navy);
   border-radius: 50%;
   margin-top: -10mm;
   flex-shrink: 0;
@@ -490,34 +634,62 @@ html, body {
   transform: rotate(8deg);
 }
 
-/* --- sticky-note panel (right column) --- */
-.missing-col { display: flex; flex-direction: column; }
-.sticky-board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5mm;
-  margin-top: 2mm;
-  flex: 1;
+/* --- Roadmap / "What's next?" panel (right column) --- */
+.roadmap-col { display: flex; flex-direction: column; gap: 2mm; }
+.roadmap-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 2mm 0 4mm;
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
 }
-.sticky {
-  aspect-ratio: 1 / 1;
-  border-radius: 0.8mm;
-  box-shadow: 0.5mm 0.7mm 1.6mm rgba(0,0,0,.18);
-  background-image: repeating-linear-gradient(
-    transparent 0 8mm,
-    rgba(0,0,0,.06) 8mm 8.2mm
-  );
+.roadmap-bullets li {
+  position: relative;
+  padding-left: 10mm;
+  font-family: var(--font-body);
+  font-size: 24pt;
+  color: var(--ink);
+  line-height: 1.35;
 }
-.sticky.s1 { background-color: var(--sticky-yellow); transform: rotate(-1.6deg); }
-.sticky.s2 { background-color: var(--sticky-pink);   transform: rotate(1.2deg);  }
-.sticky.s3 { background-color: var(--sticky-green);  transform: rotate(-0.7deg); }
-.sticky.s4 { background-color: var(--sticky-blue);   transform: rotate(1.6deg);  }
-.sticky.s5 { background-color: var(--sticky-pink);   transform: rotate(-1.3deg); }
-.sticky.s6 { background-color: var(--sticky-yellow); transform: rotate(0.9deg);  }
+.roadmap-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--orange);
+  font-size: 26pt;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.roadmap-bullets strong { color: var(--navy); font-weight: 700; }
+.roadmap-leads {
+  display: inline-block;
+  margin-top: 1mm;
+  font-size: 19pt;
+  color: var(--muted);
+}
+.roadmap-h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26pt;
+  color: var(--navy);
+  margin: 4mm 0 2mm;
+  padding-bottom: 1mm;
+  border-bottom: 0.3mm solid var(--orange);
+}
+.roadmap-text {
+  font-family: var(--font-body);
+  font-size: 22pt;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 0 0 2mm;
+}
+.roadmap-text strong { color: var(--navy); font-weight: 700; }
+.roadmap-text .muted { color: var(--muted); font-style: italic; }
 
 /* ============== FOOTER — website-style ============== */
 .footer {
-  margin-top: auto;
   background: var(--navy-deep);
   color: #fff;
   padding: 0 18mm;
