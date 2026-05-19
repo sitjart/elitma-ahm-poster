@@ -1,12 +1,8 @@
 name: Build poster PDF
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'pdfs/**'
-      - '.github/**'
-      - '*.md'
+  # Manual-only: trigger via the "Run workflow" button in the Actions tab.
+  # This keeps versioned PDFs deliberate instead of bumping on every push.
   workflow_dispatch:
 
 permissions:
