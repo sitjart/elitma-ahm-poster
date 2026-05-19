@@ -8,39 +8,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900&family=Work+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="poster.css">
   <script>
-    // Scale the A0 sheet to fit the viewport on screen (no effect on print).
+    // Fit the A0 sheet to the viewport HEIGHT on first load.
+    // Aspect ratio is preserved (it's A0); the stage takes the scaled size so
+    // the page lays out cleanly and the poster sits centered. Runs only ONCE
+    // on load — never on resize/zoom — so the user can zoom in to read the
+    // content and the browser scrollbars let them pan around.
     function fitPosterToViewport() {
       if (window.matchMedia('print').matches) return;
-      var p = document.querySelector('.poster');
-      if (!p) return;
+      var stage = document.querySelector('.poster-stage');
+      var p     = document.querySelector('.poster');
+      if (!stage || !p) return;
       p.style.transform = 'none';
-      p.style.marginRight = '0';
-      p.style.marginBottom = '0';
+      stage.style.width = '';
+      stage.style.height = '';
       var w = p.offsetWidth, h = p.offsetHeight;
-      var pad = 32;  // 16px gutter on each side
-      var s = Math.min(
-        (window.innerHeight - pad) / h,
-        (window.innerWidth  - pad) / w,
-        1
-      );
+      var pad = 32;  // 16px gutter top/bottom
+      var s = Math.min((window.innerHeight - pad) / h, 1);
       p.style.transform = 'scale(' + s + ')';
-      p.style.marginRight  = (-(1 - s) * w) + 'px';
-      p.style.marginBottom = (-(1 - s) * h) + 'px';
+      stage.style.width  = (s * w) + 'px';
+      stage.style.height = (s * h) + 'px';
+    }
+    function clearPosterScale() {
+      var stage = document.querySelector('.poster-stage');
+      var p     = document.querySelector('.poster');
+      if (p) p.style.transform = 'none';
+      if (stage) { stage.style.width = ''; stage.style.height = ''; }
     }
     window.addEventListener('DOMContentLoaded', fitPosterToViewport);
-    window.addEventListener('resize', fitPosterToViewport);
-    window.addEventListener('beforeprint', function () {
-      var p = document.querySelector('.poster');
-      if (!p) return;
-      p.style.transform = 'none';
-      p.style.marginRight = '0';
-      p.style.marginBottom = '0';
-    });
+    window.addEventListener('beforeprint', clearPosterScale);
     window.addEventListener('afterprint', fitPosterToViewport);
   </script>
 </head>
 <body>
 
+<div class="poster-stage">
 <section class="poster">
 
   <!-- ============ MAC BROWSER WINDOW ============ -->
@@ -378,6 +379,7 @@
   </div><!-- /.browser -->
 
 </section>
+</div><!-- /.poster-stage -->
 
 </body>
 </html>
