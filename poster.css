@@ -864,9 +864,26 @@ html, body {
 }
 
 /* ============== SCREEN PREVIEW ============== */
+/* Scale the A0 sheet to fit the viewport.
+   The scale value is set by a small inline script in poster.html so
+   we don't depend on fragile CSS calc(length/length). Print rules
+   are unaffected and still produce the full 841×1189 mm sheet. */
 @media screen {
-  body { padding: 20px; }
+  html, body {
+    margin: 0;
+    background: #555;
+  }
+  body {
+    box-sizing: border-box;
+    padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
   .poster {
+    transform-origin: top left;
     box-shadow: 0 6px 30px rgba(0,0,0,.25);
+    /* JS sets: transform, margin-right, margin-bottom */
   }
 }
