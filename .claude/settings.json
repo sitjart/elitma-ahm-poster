@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m http.server 8765)",
+      "Bash(echo \"started PID $!\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8765/poster.html)",
+      "Bash(command -v chromium chrome google-chrome)",
+      "Read(//Applications/**)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=2384,3370 --screenshot=/tmp/poster-shot.png http://localhost:8765/poster.html)",
+      "Bash(git commit -m ' *)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=2384,3370 --screenshot=/tmp/poster-shot2.png http://localhost:8765/poster.html)",
+      "Bash(curl -s http://localhost:8765/poster.html)",
+      "Bash(python3 -m http.server 8766)",
+      "Bash(echo \"PID $!\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8766/poster.html)",
+      "Bash(curl -s http://localhost:8766/poster.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=2384,3370 --screenshot=/tmp/poster-shot3.png http://localhost:8766/poster.html)"
+    ]
+  }
+}

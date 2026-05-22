@@ -281,6 +281,7 @@ html, body {
 }
 .module-chip--dev  { color: var(--orange); border-color: var(--orange); }
 .module-chip--done { color: #2a8a3e; border-color: #2a8a3e; }
+.module-chip--next { color: #1664a8; border-color: #1664a8; background: #eaf3fb; }
 .chips {
   display: flex;
   flex-wrap: wrap;
