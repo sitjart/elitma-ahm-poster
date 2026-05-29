@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=3200,4600 --screenshot=/tmp/poster_full.png \"file:///Users/xeniaperezsitja/elitma-ahm-poster/poster.html\")",
+      "Bash(sips -g pixelWidth -g pixelHeight /tmp/poster_full.png)",
+      "Bash(cp poster_full.png crop.png)",
+      "Bash(sips -c 900 3200 --cropOffset 1100 0 crop.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight crop.png)",
+      "Bash(cp poster_full.png cf.png)",
+      "Bash(sips -c 400 850 --cropOffset 1230 1850 cf.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight cf.png)",
+      "Bash(cp poster_full.png cf2.png)",
+      "Bash(sips -c 240 820 --cropOffset 1560 1430 cf2.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight cf2.png)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=3200,4600 --screenshot=/tmp/pf.png \"file:///Users/xeniaperezsitja/elitma-ahm-poster/poster.html\")",
+      "Bash(cp pf.png band.png)",
+      "Bash(sips -c 520 3200 --cropOffset 1380 0 band.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight band.png)"
+    ]
+  }
+}
