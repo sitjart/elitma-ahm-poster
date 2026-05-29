@@ -271,7 +271,7 @@ html, body {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-body);
-  font-size: 14pt;
+  font-size: 18pt;
   font-weight: 600;
   padding: 1mm 4mm;
   border-radius: 999px;
