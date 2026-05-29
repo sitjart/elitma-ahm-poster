@@ -489,7 +489,7 @@ html, body {
 .thermo-legend {
   display: flex;
   align-items: center;
-  gap: 12mm;
+  gap: 8mm;
   flex-wrap: wrap;
   margin: 4mm 0 6mm;
   padding: 4mm 6mm;
@@ -516,7 +516,6 @@ html, body {
 .legend-dot-take { background: var(--orange); }
 .legend-dot-give { background: var(--teal); }
 .legend-hint {
-  margin-left: auto;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 14pt;
@@ -737,7 +736,6 @@ html, body {
 .footer-col-brand .footer-brand-logo {
   height: 32mm;
   width: auto;
-  filter: brightness(0) invert(1);
   margin-bottom: 0;
 }
 .footer-tagline {
