@@ -31,9 +31,9 @@
   --sticky-green:  #c8f0c0;
   --sticky-blue:   #c3e0ff;
 
-  --font-display: "Work Sans", "Lato", system-ui, sans-serif;
+  --font-display: "Lato", system-ui, sans-serif;
   --font-body:    "Lato", system-ui, sans-serif;
-  --font-serif:   "Source Serif 4", Georgia, serif;
+  --font-serif:   "Lato", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
